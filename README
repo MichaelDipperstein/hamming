@@ -20,7 +20,8 @@ http://michael.dipperstein.com/hamming
 
 FILES
 -----
-COPYING         - Rules for copying and distributing LGPL software
+COPYING         - Rules for copying and distributing GPL software
+COPYING.LESSER  - Rules for copying and distributing LGPL software
 hamming.c       - Hamming encode and decode functions
 hamming.h       - Prototypes for encode and decode functions
 LICENSE         - GNU Lesser General Public License (LGPL)
@@ -53,6 +54,7 @@ HISTORY
             <furettoo@gmail.com>
           - Added test that verifies all single bit errors are correctly
             decoded.
+08/29/07  - Licensed explicitly under LGPL version 3.
 
 TODO
 ----
