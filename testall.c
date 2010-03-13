@@ -15,8 +15,15 @@
 ****************************************************************************
 *   UPDATES
 *
-*   $Id: testall.c,v 1.1.1.1 2005/01/02 05:06:45 michael Exp $
+*   $Id: testall.c,v 1.3 2005/10/24 12:48:48 michael Exp $
 *   $Log: testall.c,v $
+*   Revision 1.3  2005/10/24 12:48:48  michael
+*   Add test to verify that all single bitr errors are corrected.
+*
+*   Revision 1.2  2005/10/24 12:33:12  michael
+*   corrected errors in decode matrices pointed out by Ivan Piasini
+*   <furettoo@gmail.com>
+*
 *   Revision 1.1.1.1  2005/01/02 05:06:45  michael
 *   Initial version
 *
@@ -120,6 +127,7 @@ void TestAll(void)
 {
     unsigned char testValue;
     unsigned char result1, result2, result3;
+    unsigned char error;
 
     /* verify that decode is the reverse of encode */
     printf("Verifying Matched Encode/Decode ...\n");
@@ -161,7 +169,6 @@ void TestAll(void)
         result1 = HammingMatrixDecode(testValue);
         result2 = HammingTableDecode(testValue);
         result3 = HammingPackedTableDecode(testValue);
-        result3 = result2;
 
         if ((result1 != result2) || (result1 != result3))
         {
@@ -170,6 +177,28 @@ void TestAll(void)
 
         printf("%02X\t%02X\t%02X\t%02X\n",
             testValue, result1, result2, result3);
+    }
+
+    /* verify that all single bit errors are corrected */
+    printf("Verifying Single Bit Errors Are Corrected ...\n");
+    printf("Value\tEncoded\tError\tDecoded\n");
+    for (testValue = 0x00; testValue < DATA_VALUES; testValue++)
+    {
+        result1 = HammingMatrixEncode(testValue);
+
+        for (error = 0x01; error < 0x80; error <<= 1)
+        {
+            result2 = result1 ^ error;
+            result3 = HammingMatrixDecode(result2);
+
+            if (testValue != result3)
+            {
+                printf("*** Error Decoding: %02X ****\n", result2);
+            }
+
+            printf("%02X\t%02X\t%02X\t%02X\n",
+                testValue, result1, result2, result3);
+        }
     }
 }
 

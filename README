@@ -49,6 +49,10 @@ Default usages with no options tests all functions.
 HISTORY
 -------
 12/29/04  - Initial release
+10/24/05  - Corrected errors in decode matrices pointed out by Ivan Piasini
+            <furettoo@gmail.com>
+          - Added test that verifies all single bit errors are correctly
+            decoded.
 
 TODO
 ----
