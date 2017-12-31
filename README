@@ -16,7 +16,7 @@ and both versions are smaller and faster than the matrix version, but I used
 the matrix version to come up with the tables for the table versions.
 
 More information on Hamming encoding and decoding may be found at:
-http://michael.dipperstein.com/hamming
+https://michaeldipperstein.github.io/hamming.html
 
 FILES
 -----
