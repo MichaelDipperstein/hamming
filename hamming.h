@@ -23,7 +23,7 @@
 ****************************************************************************
 *
 * Hamming: A collection of ANSI C Hamming Encoding/Decoding routines
-* Copyright (C) 2004, 2007 by Michael Dipperstein (mdipper@cs.ucsb.edu)
+* Copyright (C) 2004, 2007 by Michael Dipperstein (mdipperstein@gmail.com)
 *
 * This file is part of the Hamming library.
 *
